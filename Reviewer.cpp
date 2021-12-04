@@ -75,28 +75,50 @@ void imp(int tot){
 }
 void del(){
 	system("cls");
-	cout<<"Choose an item, or use -1 to terminate this process"<<endl;
-	int num;
-	cin>>num;
-	if (num == -1) return;
-	system("cls");
-	if (num>tot){
-		cout<<"Out of bounds"<<endl;
-		nxp();
-		del();
-		return;
+	for (int i=0;i<=tot/10;i++){
+		cout<<"Choose an item, or use -1 to terminate this process"<<endl;
+		cout<<"Press A or D to go to previous or next page"<<endl;
+		for (int j=i*10+1;j<=min(tot,(i+1)*10);j++) cout<<j<<"."<<disc[j]<<"\n";
+		string s;
+		cin>>s;
+		if (s == "A" || s == "a"){
+			system("cls");
+			i-=2;
+			i = max(i,-1);
+			continue;
+		}
+		else if (s == "D" || s == "d"){
+			system("cls");
+			i = min(i,tot/10-1);
+			continue;
+		}
+		else if (s == "-1") return;
+		else{
+			long long num = 0;
+			int len = s.length();
+			cout<<len<<endl;
+			for (int j=0;j<len;j++) num = num*10+(s[j]-'0');
+			cout<<num<<endl;
+			system("cls");
+			if (num>tot){
+				cout<<"Out of bounds"<<endl;
+				nxp();
+				del();
+				return;
+			}
+			system("cls");
+			cout<<"Information:"<<endl;
+			cout<<disc[num]<<endl<<ans[num]<<endl;
+			if (!dead[num]) cout<<"1.Delete it"<<endl;
+			else cout<<"1.Recover it"<<endl;
+			cout<<"2.Change it"<<endl<<"3.Back"<<endl;
+			int ch;
+			cin>>ch;
+			if (ch == 1) dead[num] = 1-dead[num];
+			else if (ch == 2) imp(num);
+			else del();
+		}
 	}
-	system("cls");
-	cout<<"Information:"<<endl;
-	cout<<disc[num]<<endl<<ans[num]<<endl;
-	if (!dead[num]) cout<<"1.Delete it"<<endl;
-	else cout<<"1.Recover it"<<endl;
-	cout<<"2.Change it"<<endl<<"3.Back"<<endl;
-	int ch;
-	cin>>ch;
-	if (ch == 1) dead[num] = 1-dead[num];
-	else if (ch == 2) imp(num);
-	else del();
 }
 void menu(){
 	system("cls");
