@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.OK = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -50,9 +52,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(122, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 24);
+            this.label2.Size = new System.Drawing.Size(109, 24);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Version: 0.2.1";
+            this.label2.Text = "Version: 2.0";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // linkLabel1
@@ -69,11 +71,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 142);
+            this.label3.Location = new System.Drawing.Point(31, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(268, 24);
+            this.label3.Size = new System.Drawing.Size(320, 24);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Copyright(c)2021 Bowen Wan";
+            this.label3.Text = "Copyright(c)2021-2022 Bowen Wan";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // OK
@@ -86,17 +88,28 @@
             this.OK.UseVisualStyleBackColor = true;
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(111, 229);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(139, 24);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Update Pack: 2";
+            // 
             // Form2
             // 
             this.AcceptButton = this.OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 244);
+            this.ClientSize = new System.Drawing.Size(378, 274);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
@@ -112,5 +125,6 @@
         private LinkLabel linkLabel1;
         private Label label3;
         private Button OK;
+        private Label label4;
     }
 }

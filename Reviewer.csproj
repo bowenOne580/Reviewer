@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bitbug_favicon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
