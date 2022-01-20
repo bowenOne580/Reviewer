@@ -13,6 +13,7 @@ namespace Reviewer
                 Vars.now++;
                 if (Vars.now == Vars.tot + 1)
                 {
+                    progressBar1.Value = 100;
                     ifcor.Hide();
                     inpbox.Hide();
                     conti.Text = "Finish";
@@ -34,13 +35,13 @@ namespace Reviewer
 
         private void impbut_Click(object sender, EventArgs e)
         {
-            Vars.readVars();
             Vars.getlib();
+            Vars.readVars();
             Form3 form3 = new Form3();
             form3.Show();
         }
 
-        int coun = 0;
+        int coun = 0,totc = 0;
         private void conti_Click(object sender, EventArgs e)
         {
             coun++;
@@ -54,6 +55,7 @@ namespace Reviewer
                 else ifcor.Text = "Please check it yourself, the order may not be the same as the answer\nAnswer: " + Vars.ans[Vars.pos[Vars.now]];
                 ifcor.Show();
                 conti.Text = "Continue";
+                progressBar1.PerformStep();
             }
             else
             {
@@ -70,6 +72,8 @@ namespace Reviewer
                 }
                 if (Vars.now == Vars.tot + 2)
                 {
+                    progressBar1.Hide();
+                    button1.Hide();
                     conti.Hide();
                     des.Hide();
                     revbut.Show();
@@ -94,6 +98,9 @@ namespace Reviewer
 
         private void button1_Click(object sender, EventArgs e)
         {
+            totc = 0;
+            progressBar1.Value = 0;
+            progressBar1.Show();
             coun = 0;
             Vars.getlib();
             Vars.readVars();
@@ -108,7 +115,11 @@ namespace Reviewer
             Random rand = new Random(sed);
             for (int i = 1; i <= Vars.tot; i++)
             {
-                if (Vars.dead[i] == 0) flag = 1;
+                if (Vars.dead[i] == 0)
+                {
+                    flag = 1;
+                    totc++;
+                }
                 int rd = rand.Next(1, 10000);
                 rd %= Vars.tot;
                 rd++;
@@ -118,6 +129,8 @@ namespace Reviewer
                 Vars.pos[i] = rd;
                 Vars.vis[rd] = 1;
             }
+            int tmp = totc*10;
+            progressBar1.Maximum = tmp;
             Vars.now = 1;
             if (Vars.tot == 0 || flag == 0)
             {
@@ -131,8 +144,23 @@ namespace Reviewer
                 wel.Show();
                 return;
             }
+            button1.Show();
             inpbox.Text = "";
             showpro();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            inpbox.Hide();
+            progressBar1.Hide();
+            conti.Hide();
+            des.Hide();
+            button1.Hide();
+            revbut.Show();
+            impbut.Show();
+            manbut.Show();
+            abtbut.Show();
+            wel.Show();
         }
 
         private void manbut_Click(object sender, EventArgs e)
@@ -192,6 +220,27 @@ namespace Reviewer
             }
             input.Close();
             return;
+        }
+        public static void backup()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "backup.txt";
+            FileStream fs = System.IO.File.Create(path);
+            fs.Close();
+            fs.Dispose();
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            StreamWriter output = new StreamWriter(path, true, System.Text.Encoding.GetEncoding("gb2312"));
+            string num = Vars.tot + "";
+            output.WriteLine(num);
+            for (int i = 1; i <= Vars.tot; i++)
+            {
+                output.WriteLine(Vars.disc[i]);
+                output.WriteLine(Vars.ans[i]);
+            }
+            for (int i = 1; i <= Vars.tot; i++)
+            {
+                output.WriteLine(Vars.dead[i]);
+            }
+            output.Close();
         }
         public static void writeVars()
         {

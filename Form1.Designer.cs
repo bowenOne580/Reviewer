@@ -38,8 +38,8 @@
             this.inpbox = new System.Windows.Forms.TextBox();
             this.conti = new System.Windows.Forms.Button();
             this.ifcor = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // wel
@@ -133,15 +133,25 @@
             this.ifcor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ifcor.Visible = false;
             // 
-            // pictureBox1
+            // progressBar1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 75);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
+            this.progressBar1.Location = new System.Drawing.Point(208, 401);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(364, 25);
+            this.progressBar1.TabIndex = 9;
+            this.progressBar1.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 60);
+            this.button1.TabIndex = 10;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Reviewer
             // 
@@ -149,7 +159,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.conti);
             this.Controls.Add(this.inpbox);
             this.Controls.Add(this.des);
@@ -163,7 +174,6 @@
             this.Name = "Reviewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reviewer";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,6 +190,7 @@
         private TextBox inpbox;
         private Button conti;
         private Label ifcor;
-        private PictureBox pictureBox1;
+        private ProgressBar progressBar1;
+        private Button button1;
     }
 }

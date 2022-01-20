@@ -41,6 +41,8 @@
             this.but5 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.delbut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chkbox
@@ -55,7 +57,7 @@
             // 
             // but1
             // 
-            this.but1.Location = new System.Drawing.Point(60, 338);
+            this.but1.Location = new System.Drawing.Point(44, 338);
             this.but1.Name = "but1";
             this.but1.Size = new System.Drawing.Size(112, 34);
             this.but1.TabIndex = 1;
@@ -65,7 +67,7 @@
             // 
             // but2
             // 
-            this.but2.Location = new System.Drawing.Point(454, 338);
+            this.but2.Location = new System.Drawing.Point(280, 338);
             this.but2.Name = "but2";
             this.but2.Size = new System.Drawing.Size(112, 34);
             this.but2.TabIndex = 2;
@@ -75,7 +77,7 @@
             // 
             // but3
             // 
-            this.but3.Location = new System.Drawing.Point(256, 338);
+            this.but3.Location = new System.Drawing.Point(162, 338);
             this.but3.Name = "but3";
             this.but3.Size = new System.Drawing.Size(112, 34);
             this.but3.TabIndex = 3;
@@ -147,11 +149,34 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Filter:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(629, 193);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 34);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Backup Library";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // delbut
+            // 
+            this.delbut.ForeColor = System.Drawing.Color.Red;
+            this.delbut.Location = new System.Drawing.Point(488, 338);
+            this.delbut.Name = "delbut";
+            this.delbut.Size = new System.Drawing.Size(112, 34);
+            this.delbut.TabIndex = 10;
+            this.delbut.Text = "Delete";
+            this.delbut.UseVisualStyleBackColor = true;
+            this.delbut.Click += new System.EventHandler(this.delbut_Click);
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.delbut);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.but5);
@@ -183,5 +208,7 @@
         private Button but5;
         private ComboBox comboBox1;
         private Label label1;
+        private Button button1;
+        private Button delbut;
     }
 }

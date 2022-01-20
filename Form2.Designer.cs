@@ -95,7 +95,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(139, 24);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Update Pack: 2";
+            this.label4.Text = "Update Pack: 5";
             // 
             // Form2
             // 

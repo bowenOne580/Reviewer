@@ -7,6 +7,7 @@
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
             chkbox.CheckOnClick = true;
+            lab1.Hide();
         }
         public void init(int mode)
         {
@@ -33,7 +34,6 @@
                 }
             }
             but3.Hide();
-            lab1.Hide();
         }
 
         private void but1_Click(object sender, EventArgs e)
@@ -59,10 +59,10 @@
             Vars.writeVars();
             init(comboBox1.SelectedIndex);
         }
-
+        private int cnt;
         private void chkbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int cnt = 0;
+            cnt = 0;
             for (int i = 0; i < chkbox.Items.Count; i++) if (chkbox.GetItemChecked(i)) cnt++;
             if (cnt == 1) but3.Show();
             else but3.Hide();
@@ -101,6 +101,65 @@
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            init(comboBox1.SelectedIndex);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Vars.backup();
+            lab1.Text = "Backup Completed!";
+            lab1.Show();
+            timer1.Stop();
+            timer1.Interval = 1500;
+            timer1.Start();
+        }
+        private int tmptot = 0;
+        private int[] tmpdead = new int[2021],del = new int[2021];
+        private string[] tmpdisc = new string[2021], tmpans = new string[2021];
+        private void delbut_Click(object sender, EventArgs e)
+        {
+            if (cnt == 0)
+            {
+                MessageBox.Show("No item is selected!");
+                return;
+            }
+            DialogResult dr;
+            if (cnt == 1) dr = MessageBox.Show("Do you still want to delete this item?","Warning",MessageBoxButtons.YesNo);
+            else dr = MessageBox.Show("Do you still want to delete these items?","Warning",MessageBoxButtons.YesNo);
+            if (dr == DialogResult.No) return;
+            tmptot = 0;
+            for (int i = 1; i <= 2000; i++)
+            {
+                tmpdead[i] = 0;
+                tmpdisc[i] = "";
+                tmpans[i] = "";
+                del[i] = 0;
+            }
+            for (int i = 0; i < chkbox.Items.Count; i++)
+            {
+                if (chkbox.GetItemChecked(i))
+                {
+                    del[Vars.keyto[i]] = 1;
+                }
+            }
+            for (int i = 1; i <= Vars.tot; i++)
+            {
+                if (del[i] == 0)
+                {
+                    tmptot++;
+                    tmpdisc[tmptot] = Vars.disc[i];
+                    tmpans[tmptot] = Vars.ans[i];
+                    tmpdead[tmptot] = Vars.dead[i];
+                }
+            }
+            for (int i = 1; i <= tmptot; i++)
+            {
+                Vars.disc[i] = tmpdisc[i];
+                Vars.ans[i] = tmpans[i];
+                Vars.dead[i] = tmpdead[i];
+            }
+            Vars.tot = tmptot;
+            Vars.writeVars();
             init(comboBox1.SelectedIndex);
         }
     }
